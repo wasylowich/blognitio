@@ -16,7 +16,7 @@ class PostsController extends BaseApiController
      */
     public function index()
     {
-        return auth()->user()->posts()->get();
+        return auth()->user()->posts()->with('comments')->get();
     }
 
     /**

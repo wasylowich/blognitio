@@ -19,6 +19,11 @@ Route::middleware(['auth:api'])
     ->as('api.')
     ->group(function () {
 
+    // Show the authenticated user
+    Route::get('/user', function (Request $request) {
+        return $request->user();
+    })->name('users.show');
+
 	// CRUD for posts
     Route::get('all-posts', 'PostsController@allPosts')->name('allPosts.index');
     Route::resource('posts', 'PostsController', ['only' => ['index', 'show', 'store', 'update', 'destroy']]);
